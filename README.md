@@ -1,8 +1,10 @@
 # Energy Usage Data Analysis with Seoul Open API
 
-![Project Overview](docs/screenshots/visualize_results.png)
-
 This project automates the collection, transformation, and visualization of Seoul Eco-Mileage energy usage statistics for the 개인 (household) category from January 2015 through December 2024. The annual line chart includes the student ID suffix `2212` in its title as required by the assignment brief.
+
+![Annual Total Energy Usage](reports/figures/annual_total_energy_2212.png)
+
+![Seasonal Gas Usage](reports/figures/seasonal_gas_usage.png)
 
 ## Project Layout
 - `src/fetch_energy_data.py` — calls the Open API for each month and stores the raw JSON
