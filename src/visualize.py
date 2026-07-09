@@ -49,9 +49,9 @@ def plot_annual_total(df: pd.DataFrame) -> None:
 
     plt.figure(figsize=(10, 6))
     plt.plot(annual["year"], annual["total_usage"], marker="o")
-    plt.title("연도별 에너지 사용 총량 변화 - 2212")
+    plt.title("연도별 과제용 단순 합계 변화 - 2212")
     plt.xlabel("연도")
-    plt.ylabel("총 사용량 (합산 단위)")
+    plt.ylabel("서로 다른 원 단위 수치의 단순 합계")
     plt.grid(True, linestyle="--", alpha=0.5)
 
     output = FIGURES_DIR / "annual_total_energy_2212.png"
@@ -67,9 +67,9 @@ def plot_seasonal_gas(df: pd.DataFrame) -> None:
 
     plt.figure(figsize=(8, 6))
     bars = plt.bar(seasonal.index, seasonal.values, color="#4C72B0")
-    plt.title("계절별 가스 사용량 평균")
+    plt.title("개인 유형의 계절별 월 집계 가스값 평균")
     plt.xlabel("계절")
-    plt.ylabel("평균 가스 사용량 (㎥)")
+    plt.ylabel("원자료 가스값 평균 (㎥)")
 
     for bar in bars:
         height = bar.get_height()
