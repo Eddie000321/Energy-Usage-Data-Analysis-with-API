@@ -16,7 +16,7 @@ This project automates the collection, transformation, and visualization of Seou
 - `data/processed/` — processed datasets (CSV)
 - `reports/figures/` — generated charts (PNG)
 - `reports/analysis.md` — template for the 200-character analytical summary
-- `docs/screenshots/` — drop in API key registration, script run logs, and graph previews
+- `docs/engineering_case_study.md` — design decisions, verification evidence, limits, and lessons learned
 - `requirements.txt` — Python dependencies
 
 ## Setup
@@ -26,10 +26,11 @@ This project automates the collection, transformation, and visualization of Seou
    ```bash
    pip install -r requirements.txt
    ```
-4. Create a `.env` file in the project root and add your key:
+4. Set your Seoul Open API key as an environment variable:
+   ```bash
+   export SEOUL_OPEN_API_KEY="your_api_key_here"
    ```
-   SEOUL_OPEN_API_KEY=REPLACE_WITH_YOUR_KEY
-   ```
+   The application reads the process environment directly; it does not automatically load `.env` files. If you keep a local `.env` as a reference, export its value in your shell and never commit it.
 
 ## Usage
 1. **Collect data**
@@ -55,10 +56,15 @@ This project automates the collection, transformation, and visualization of Seou
 4. **Write the analysis**
    Update `reports/analysis.md` with a sub-200-character interpretation of the trends.
 
-## Screenshots & Results
-- `docs/screenshots/api_key.png` — API key issuance confirmation
-- `docs/screenshots/fetch_run.png` — terminal output of the collection script
-- `docs/screenshots/preprocess_run.png` — terminal output of the preprocessing script
-- `docs/screenshots/visualize_results.png` — preview of the generated charts
+> **Shortcut:** 환경 설정이 끝났다면 전체 파이프라인은
+> `python src/run_pipeline.py`
 
-Add or replace the placeholder files above with your actual screenshots when documenting the deliverables.
+## Verification
+
+The network-free suite checks response validation, category filtering, deterministic snapshot writes, idempotent CSV generation, ordered orchestration, and fail-closed behavior without using a live API key:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+See the [engineering case study](docs/engineering_case_study.md) for the problem, design decision, verification evidence, known limits, and lessons learned. Private API-registration screenshots and raw credentials are intentionally excluded from the public repository.
