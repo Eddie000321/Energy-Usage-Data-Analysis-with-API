@@ -1,12 +1,40 @@
 # Energy Usage Data Analysis with Seoul Open API
 
-This project automates the collection, transformation, and visualization of Seoul Eco-Mileage energy usage statistics for the 개인 (household) category from January 2015 through December 2024. The annual line chart includes the student ID suffix `2212` in its title as required by the assignment brief.
+**A reproducible API-to-report pipeline for ten years of Seoul Eco-Mileage
+household-category aggregate data.**
 
-![Annual assignment helper sum](reports/figures/annual_total_energy_2212.png)
-<sub>Annual assignment helper: the source electricity, gas, water, and district-heating values are added without unit conversion. This is a trend aid, not a normalized energy measure.</sub>
+[![CI](https://github.com/Eddie000321/Energy-Usage-Data-Analysis-with-API/actions/workflows/ci.yml/badge.svg)](https://github.com/Eddie000321/Energy-Usage-Data-Analysis-with-API/actions/workflows/ci.yml)
+[![Portfolio entry](https://img.shields.io/badge/Portfolio-Project_Entry-006f9c)](https://eddie000321.github.io/#project-energy-usage-data-pipeline)
+![Python](https://img.shields.io/badge/Python-data_pipeline-3776AB?logo=python&logoColor=white)
+![Coverage](https://img.shields.io/badge/data-120_months-006f9c)
+![Tests](https://img.shields.io/badge/tests-11_network--free-587812)
 
-![Seasonal Gas Usage](reports/figures/seasonal_gas_usage.png)
-<sub>Mean of the monthly aggregate gas values for the `개인` category, grouped by season. This is not a per-household average.</sub>
+The project collects, validates, transforms, and visualizes Seoul Eco-Mileage
+energy usage statistics for the `개인` (household) category from January 2015
+through December 2024. Every tracked chart and short analytical claim is
+recomputed from the checked-in 120-month dataset.
+
+## Analysis preview
+
+| Annual assignment trend aid | Seasonal gas aggregate |
+| --- | --- |
+| ![Annual source-value sum across electricity, gas, water, and district heating](reports/figures/annual_total_energy_2212.png) | ![Mean monthly aggregate gas values grouped by season](reports/figures/seasonal_gas_usage.png) |
+
+> The annual figure adds source values without unit conversion and is not a normalized energy measure.
+> The seasonal figure is based on monthly aggregate
+> values and is not a per-household average.
+
+## Pipeline
+
+```mermaid
+flowchart LR
+    API[Seoul Open API] --> Validate[Response and category validation]
+    Validate --> Raw[Deterministic raw snapshots]
+    Raw --> Transform[Idempotent preprocessing]
+    Transform --> CSV[120-month analysis CSV]
+    CSV --> Charts[Reproducible figures]
+    CSV --> Summary[Verified short analysis]
+```
 
 ## Data Source & License
 
