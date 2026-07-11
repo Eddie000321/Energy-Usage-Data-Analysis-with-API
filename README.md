@@ -20,8 +20,8 @@ recomputed from the checked-in 120-month dataset.
 | --- | --- |
 | ![Annual source-value sum across electricity, gas, water, and district heating](reports/figures/annual_total_energy_2212.png) | ![Mean monthly aggregate gas values grouped by season](reports/figures/seasonal_gas_usage.png) |
 
-> The annual figure adds source values without unit conversion and is not a
-> normalized energy measure. The seasonal figure is based on monthly aggregate
+> The annual figure adds source values without unit conversion and is not a normalized energy measure.
+> The seasonal figure is based on monthly aggregate
 > values and is not a per-household average.
 
 ## Pipeline
